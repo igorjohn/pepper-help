@@ -1,0 +1,14 @@
+:root{
+    --text-color-body: rgb(75 85 99);
+    --text-color-title: #213547;
+
+
+    --button-font-weight: 600;
+    --button-font-size: 0.875rem;
+    --button-padding: 0.625rem 0.875rem;
+    --button-border-radius: 0.375rem;
+
+    
+    --body-background-light: #fff;
+    --body-background-dark: #120f1e;
+}
