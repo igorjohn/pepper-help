@@ -6,7 +6,11 @@ import SidebarComponent from '@/components/SidebarComponent.vue'
 
 <script>
 export default {
+  data() {
+    return {
 
+    }
+  }
 }
 </script>
 

@@ -1,20 +1,10 @@
 <script setup>
 import axios from "axios";
-
-/* import ImgInfoprodutor from '@/assets/img/illustrations/infoprodutor.jpg'
-import ImgComprador from '@/assets/img/illustrations/comprador.jpg'
-import ImgTermosUso from '@/assets/img/illustrations/termos-de-uso.jpg' */
-/* import ImgReportarProduto from '@/assets/img/illustrations/reportar-produto.jpg' */
-
 import FooterContactCTA from '@/components/FooterContactCTA.vue'
 </script>
 
 <script>
-
-
-
 export default {
-
     data() {
         return {
             homeCategories: [],
@@ -28,7 +18,6 @@ export default {
         axios.get(`${StrapiBaseURL}/categories?populate=*`).then((resp) => {
 
             var categories = resp.data.data;
-            console.log(categories)
 
             categories.forEach(z => {
                 array.push({
@@ -40,8 +29,6 @@ export default {
             });
 
             this.homeCategories = array;
-            console.log(this.homeCategories)
-
         });
     }
 }
