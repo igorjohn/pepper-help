@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex grow flex-col">
+  <div class="flex grow flex-col bg-white">
 
     <!-- Sidebar -->
     <SidebarComponent />
