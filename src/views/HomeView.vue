@@ -1,35 +1,50 @@
 <script setup>
-import ImgInfoprodutor from '@/assets/img/illustrations/infoprodutor.jpg'
+import axios from "axios";
+
+/* import ImgInfoprodutor from '@/assets/img/illustrations/infoprodutor.jpg'
 import ImgComprador from '@/assets/img/illustrations/comprador.jpg'
-import ImgTermosUso from '@/assets/img/illustrations/termos-de-uso.jpg'
+import ImgTermosUso from '@/assets/img/illustrations/termos-de-uso.jpg' */
 /* import ImgReportarProduto from '@/assets/img/illustrations/reportar-produto.jpg' */
 
 import FooterContactCTA from '@/components/FooterContactCTA.vue'
 </script>
 
 <script>
-const homeNavigationLinks = [
-    {
-        img: ImgComprador,
-        text: 'Sou comprador e preciso de ajuda',
-        href: '/categories/compradores/'
+
+
+
+export default {
+
+    data() {
+        return {
+            homeCategories: [],
+        }
     },
-    {
-        img: ImgInfoprodutor,
-        text: 'Sou produtor e preciso de suporte',
-        href: '/categories/produtores/'
-    },
-    {
-        img: ImgTermosUso,
-        text: 'Termos de uso da Pepper',
-        href: '/categories/termos-de-uso/'
-    },
-    /*     {
-            img: ImgReportarProduto,
-            text: 'Reportar ou denunciar um produto',
-            href: '/categories/compradores/'
-        }, */
-]
+    mounted() {
+        const StrapiBaseURL = 'https://strapi-116083-0.cloudclusters.net/api';
+
+        var array = [];
+
+        axios.get(`${StrapiBaseURL}/categories?populate=*`).then((resp) => {
+
+            var categories = resp.data.data;
+            console.log(categories)
+
+            categories.forEach(z => {
+                array.push({
+                    name: z.attributes.name,
+                    description: z.attributes.description,
+                    homeText: z.attributes.homeText,
+                    image: StrapiBaseURL.replace('/api', '') + z.attributes.image.data.attributes.url
+                })
+            });
+
+            this.homeCategories = array;
+            console.log(this.homeCategories)
+
+        });
+    }
+}
 </script>
 
 <template>
@@ -39,10 +54,14 @@ const homeNavigationLinks = [
     </div>
     <div class="mx-auto mt-8 mb-12 grid auto-rows-fr grid-cols-1 gap-8 lg:grid-cols-3 px-6 lg:px-2">
         <!-- v-for -->
-        <div v-for="link in homeNavigationLinks" :key="link">
-            <router-link :to="link.href" class="bg-white border border-slate-200 h-full hover:border-indigo-400 cursor-pointer rounded-lg w-full flex flex-col justify-center gap-2 p-6 hover:shadow-lg transition-all duration-400 text-center">
-                <img :src="link.img" class="mx-auto max-h-[150px]" />
-                <h5>{{ link.text }}</h5>
+        <div v-for="link in homeCategories" :key="link">
+            <router-link :to="'/categories/' + link.name" class="border border-slate-200 h-full hover:border-indigo-400 cursor-pointer rounded-lg w-full flex flex-col justify-center gap-2 p-6 hover:shadow-lg transition-all duration-400 text-center">
+                <img :src="link.image" class="mx-auto max-h-[150px]" />
+                <span class="text-xs block text-center text-gray-500">Artigos na categoria:
+
+                    "<span class="capitalize font-semibold">{{ link.name }}</span>"
+                </span>
+                <h5>{{ link.homeText }}</h5>
             </router-link>
         </div>
     </div>

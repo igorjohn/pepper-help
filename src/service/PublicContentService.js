@@ -1,24 +1,24 @@
 import axios from "axios";
 
-const StrapiBaseURL = 'http://localhost:1337/api';
+const StrapiBaseURL = 'https://strapi-116083-0.cloudclusters.net/api';
 
 export default class PublicContentService {
-    getDateCreated(slug) {
-        const slugUrl = `${StrapiBaseURL}/helps?filters[slug][$eq]=${slug}&[isPublic][$eq]=true`;
-        return axios.get(slugUrl).then((res) => res.data.data[0].attributes.createdAt);
-    }
-
-    getContentSlug(slug) {
+    getContent(slug) {
         const slugUrl = `${StrapiBaseURL}/helps?filters[slug][$eq]=${slug}&[isPublic][$eq]=true`;
         return axios.get(slugUrl).then((res) => {
 
             if (res.data.data.length > 0) {
-                this.dateCreated = res.data.data[0].attributes.createdAt;
-                return res.data.data[0].attributes.content
-            } else {
-                return false;
-            }
+
+                console.log(res.data.data)
+                return {
+                    content: res.data.data[0].attributes.content,
+                    title: res.data.data[0].attributes.title,
+                    author: res.data.data[0].attributes.author,
+                    createdAt: res.data.data[0].attributes.createdAt,
+                    updatedAt: res.data.data[0].attributes.updatedAt,
+                    slug: res.data.data[0].attributes.slug
+                }
+            } else { return false }
         });
     }
-
 }

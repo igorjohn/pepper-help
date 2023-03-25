@@ -32,7 +32,7 @@ export default {
     },
     mounted() {
 
-        const StrapiBaseURL = 'http://localhost:1337/api';
+        const StrapiBaseURL = 'https://strapi-116083-0.cloudclusters.net/api';
         axios.get(`${StrapiBaseURL}/helps?populate=*`).then((resp) => {
 
             var articles = resp.data.data;
@@ -73,7 +73,7 @@ export default {
         <div class="mt-10 space-y-12 flex flex-col flex-wrap overflow-hidden whitespace-normal">
 
             <div v-if="thisCategoryArticles && thisCategoryArticles !== []">
-                <article v-for="post in thisCategoryArticles" :key="post.id" class="flex flex-col items-start justify-between w-full">
+                <article v-for="post in thisCategoryArticles" :key="post.id" class="flex flex-col items-start justify-between w-full mb-10">
 
                     <div class="flex items-center gap-x-4 text-xs">
                         <time :datetime="post.updatedAt" class="text-gray-500">Atualizado em: {{ formatDate(post.updatedAt) }}</time>

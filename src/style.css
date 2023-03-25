@@ -75,6 +75,7 @@ h1 {
 
 p {
   margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 button {
@@ -187,6 +188,8 @@ select{
   padding: 0.75rem 1rem;
   background-color: #efefef;
   border-radius: 0.25rem;
+  max-width: 100%;
+  overflow: auto;
 }
 
 .body-content ul{
