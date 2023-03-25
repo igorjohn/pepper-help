@@ -1,10 +1,13 @@
 # pepper-help
 
 ## Terminal 1:
-cd backend\n
-npm install\n
+cd backend
+
+npm install
+
 npm run develop
-\n\n
+
 ## Terminal 2:
-npm install \n
+npm install
+
 npm run serve
