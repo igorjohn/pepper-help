@@ -1,6 +1,6 @@
 <script setup>
 import FooterPepper from '@/components/FooterPepper.vue'
-import SidebarComponent from '@/components/SidebarComponent.vue'
+import SidebarComponent from '../src/components/SidebarComponent.vue'
 
 </script>
 
