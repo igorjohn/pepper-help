@@ -3,7 +3,9 @@ import App from './App.vue'
 //import router from './router'
 import '@/style.css'
 import { createRouter, createWebHistory } from 'vue-router'
-
+import VueRouter from 'vue-router';
+import axios from 'axios';
+//import VueAxios from 'vue-axios';
 
 
 import HomeView from './views/HomeView.vue'
@@ -46,4 +48,12 @@ const router = createRouter({
 })
 
 
-createApp(App).use(router).mount('#app')
+axios.defaults.baseURL = process.env.APP_BASE_URL;
+
+const app = createApp(App)
+
+app.use(router);
+app.use(VueRouter);
+//app.use(VueAxios, axios);
+app.config.globalProperties.$axios = axios;
+app.mount('#app');
