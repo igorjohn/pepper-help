@@ -95,7 +95,7 @@ export default {
                                         {{ item[0] }}
                                     </a>
                                     <template v-for="article in item" :key="article">
-                                        <a v-if="item.indexOf(article) > 0" :href="'/' + article.slug" :class="[(article.slug == this.$route.params.article) ? 'border-indigo-300' : 'border-gray-300', 'border-l-2 text-slate-500 transition duration-400 group flex items-center px-2 py-1.5 text-[12px] leading-4 font-medium']">
+                                        <a v-if="item.indexOf(article) > 0" :href="'/' + article.slug" :class="['border-gray-300 border-l-2 text-slate-500 transition duration-400 group flex items-center px-2 py-1.5 text-[12px] leading-4 font-medium']">
                                             {{ article.title }}
                                         </a>
                                     </template>
@@ -125,7 +125,7 @@ export default {
                             {{ item[0] }}
                         </a>
                         <template v-for="article in item" :key="article">
-                            <a v-if="item.indexOf(article) > 0" :href="'/' + article.slug" :class="[(article.slug == this.$route.params.article) ? 'border-indigo-300' : 'border-gray-300', 'border-l-2 text-slate-500 transition duration-400 group flex items-center px-2 py-1.5 text-[12px] leading-4 font-medium']">
+                            <a v-if="item.indexOf(article) > 0" :href="'/' + article.slug" :class="['border-gray-300 border-l-2 text-slate-500 transition duration-400 group flex items-center px-2 py-1.5 text-[12px] leading-4 font-medium']">
                                 {{ article.title }}
                             </a>
                         </template>
@@ -142,14 +142,14 @@ export default {
         <div class="flex flex-1 justify-between px-4">
             <div class="flex flex-1">
                 <!--  <form class="flex w-full lg:ml-0" action="#" method="GET">
-                                            <label for="search-field" class="sr-only">Search</label>
-                                            <div class="relative w-full text-gray-400 focus-within:text-gray-600">
-                                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center">
-                                                    <MagnifyingGlassIcon class="h-5 w-5" aria-hidden="true" />
+                                                <label for="search-field" class="sr-only">Search</label>
+                                                <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+                                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center">
+                                                        <MagnifyingGlassIcon class="h-5 w-5" aria-hidden="true" />
+                                                    </div>
+                                                    <input id="search-field" class="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 focus:border-transparent focus:outline-none focus:ring-0 focus:placeholder:text-gray-400 sm:text-sm" placeholder="Pesquisar" type="search" name="search" />
                                                 </div>
-                                                <input id="search-field" class="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 focus:border-transparent focus:outline-none focus:ring-0 focus:placeholder:text-gray-400 sm:text-sm" placeholder="Pesquisar" type="search" name="search" />
-                                            </div>
-                                        </form> -->
+                                            </form> -->
             </div>
             <div class="ml-4 flex items-center lg:ml-6">
                 <a href="https://pepper.com.br/login.html" class="rounded-md bg-red-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-700 hover:text-white focus-visible:outline-0 flex items-center transition duration-500 ease">

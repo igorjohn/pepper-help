@@ -30,6 +30,8 @@ export default {
     },
     mounted() {
 
+        console.log(this.$route.params)
+
         this.publicContentService
             .getContent(this.$route.params.article)
             .then((data) => {
